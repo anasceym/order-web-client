@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core'
 })
 export class OrderComponent implements OnInit {
 
-  private orders: [] = [
+  private orders = [
     {
       id: 'id-1234',
       name: 'test'
