@@ -18,10 +18,10 @@ const initialState: State = {
 
 export const orderReducers = createReducer(
   initialState,
-  on(ordersLoadSuccess, (state, action) => {
+  on(ordersLoadSuccess, (state, { orders }) => {
     return {
       ...state,
-      orders: action.payload
-    }
+      orders
+    };
   })
 );
