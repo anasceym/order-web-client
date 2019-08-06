@@ -1,4 +1,4 @@
-import { createReducer, on } from '@ngrx/store'
+import { Action, createReducer, on } from '@ngrx/store'
 
 import { ordersLoadSuccess } from './order.actions'
 
@@ -15,7 +15,7 @@ const initialState: State = {
   orders: []
 }
 
-export const orderReducers = createReducer(
+export const orderReducer = createReducer(
   initialState,
   on(ordersLoadSuccess, (state, { orders }) => {
     return {
@@ -24,3 +24,7 @@ export const orderReducers = createReducer(
     }
   })
 )
+
+export function reducer(state: State | undefined, action: Action) {
+  return orderReducer(state, action)
+}
