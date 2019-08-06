@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs'
+
+import { State as OrderState } from './order.reducer'
 
 @Component({
   selector: 'app-order',
@@ -7,16 +11,20 @@ import { Component, OnInit } from '@angular/core'
 })
 export class OrderComponent implements OnInit {
 
-  private orders = [
+  private nzTableData = [
     {
-      id: 'id-1234',
+      id: 1,
       name: 'test'
     }
   ];
 
-  constructor() { }
+  private orders$: Observable<OrderState> = this.store.select(state => state.order.orders);
+
+  constructor(private store: Store<{ order: OrderState }>) { }
 
   ngOnInit() {
+    this.store.dispatch({ type: '[Order Page] Load Orders' });
+    console.log('==============> ', this.orders$)
   }
 
 }

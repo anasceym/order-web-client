@@ -1,5 +1,5 @@
 <nz-card nzTitle="Orders">
-  <nz-table #orderTable [nzData]="orders">
+  <nz-table #orderTable [nzData]="(orders$ | async)">
       <thead>
         <tr>
           <th>No</th>
