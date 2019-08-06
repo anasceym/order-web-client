@@ -7,20 +7,18 @@ import { OrderService } from './order.service'
 
 @Injectable()
 export class OrderEffects {
-
-  loadOrders$ = createEffect(() => this.actions$.pipe(
-    ofType(loadOrders),
-    mergeMap(() => this.orderService.getOrders()
-      .pipe(
-        map(orders => {
-          return (ordersLoadSuccess({ orders }));
-        })
-      ))
+  loadOrders$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadOrders),
+      mergeMap(() =>
+        this.orderService.getOrders().pipe(
+          map(orders => {
+            return ordersLoadSuccess({ orders })
+          })
+        )
+      )
     )
-  );
+  )
 
-  constructor(
-    private actions$: Actions,
-    private orderService: OrderService
-  ) {}
+  constructor (private actions$: Actions, private orderService: OrderService) {}
 }

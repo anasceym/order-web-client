@@ -9,8 +9,6 @@ import { OrderComponent } from './order.component'
 import { OrderEffects } from './order.effects'
 import { OrderService } from './order.service'
 
-
-
 @NgModule({
   declarations: [OrderComponent],
   imports: [
@@ -20,11 +18,7 @@ import { OrderService } from './order.service'
     HttpClientModule,
     EffectsModule.forFeature([OrderEffects])
   ],
-  exports: [
-    OrderComponent
-  ],
-  providers: [
-    OrderService
-  ],
+  exports: [OrderComponent],
+  providers: [OrderService]
 })
-export class OrderModule { }
+export class OrderModule {}

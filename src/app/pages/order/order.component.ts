@@ -10,21 +10,21 @@ import { Order, State as OrderState } from './order.reducer'
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-
   private nzTableData = [
     {
       id: 1,
       name: 'test'
     }
-  ];
+  ]
 
-  private orders$: Observable<Order[]> = this.store.select(state => state.order.orders);
+  private orders$: Observable<Order[]> = this.store.select(
+    state => state.order.orders
+  )
 
-  constructor(private store: Store<{ order: OrderState }>) { }
+  constructor (private store: Store<{ order: OrderState }>) {}
 
-  ngOnInit() {
-    this.store.dispatch({ type: '[Order Page] Load Orders' });
-    console.log('==============> ', this.orders$);
+  ngOnInit () {
+    this.store.dispatch({ type: '[Order Page] Load Orders' })
+    console.log('==============> ', this.orders$)
   }
-
 }

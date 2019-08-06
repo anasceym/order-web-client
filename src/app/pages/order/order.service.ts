@@ -7,9 +7,9 @@ import { Order } from './order.reducer'
   providedIn: 'root'
 })
 export class OrderService {
-  constructor(private http: HttpClient) {}
+  constructor (private http: HttpClient) {}
 
-  getOrders() {
-    return this.http.get<Order[]>('http://localhost:2700/orders');
+  getOrders () {
+    return this.http.get<Order[]>('http://localhost:2700/orders')
   }
 }
