@@ -1,1 +1,20 @@
-<p>order works!</p>
+<nz-card nzTitle="Orders">
+  <nz-table #orderTable [nzData]="orders">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of orderTable.data; let i = index">
+          <td>{{ i+1 }}</td>
+          <td>{{ data.id }}</td>
+          <td>{{ data.name }}</td>
+          <td>Action</td>
+        </tr>
+      </tbody>
+    </nz-table>
+</nz-card>
