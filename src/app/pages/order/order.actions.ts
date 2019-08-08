@@ -36,3 +36,10 @@ export const viewOrder = createAction(
 export const cancelViewOrder = createAction(
   '[Order UI] Cancel view order'
 )
+
+export const cancelOrder = createAction(
+  '[Order UI] Canel order',
+  props<{
+    id: string
+  }>()
+)

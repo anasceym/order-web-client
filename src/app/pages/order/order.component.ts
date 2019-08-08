@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-import { cancelViewOrder, createOrder, loadOrders, viewOrder } from './order.actions'
+import { cancelOrder, cancelViewOrder, createOrder, loadOrders, viewOrder } from './order.actions'
 import { Order, State as OrderState } from './order.reducer'
 
 @Component({
@@ -38,7 +38,7 @@ export class OrderComponent implements OnInit {
     
     setInterval(() => {
       this.store.dispatch(loadOrders())
-    }, 2000)
+    }, 5000)
 
     this.isVisibleViewModal$.subscribe((val) => {
       this.isVisibleViewModal = val
@@ -53,6 +53,10 @@ export class OrderComponent implements OnInit {
 
   showModal(): void {
     this.isVisible = true;
+  }
+
+  cancelOrder(orderId: string): void {
+    this.store.dispatch(cancelOrder({ id: orderId }))
   }
 
   showViewModal(orderId: string): void {

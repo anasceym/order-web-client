@@ -22,7 +22,7 @@
         </td>
         <td>
           <button nz-button nzType="primary" (click)="showViewModal(data.id)">View</button>
-          <button nz-button nzType="danger" *ngIf="data.status === 'CREATED'">Cancel</button>
+          <button nz-button nzType="danger" *ngIf="data.status === 'CREATED'" (click)="cancelOrder(data.id)">Cancel</button>
         </td>
       </tr>
     </tbody>

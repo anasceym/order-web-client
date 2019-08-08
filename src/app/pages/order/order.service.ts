@@ -17,4 +17,8 @@ export class OrderService {
   createOrder (order: CreateOrderDto) {
     return this.http.post<Order>('http://localhost:2700/orders', order)
   }
+
+  cancelOrder (orderId: string) {
+    return this.http.delete<Order>(`http://localhost:2700/orders/${orderId}`)
+  }
 }
