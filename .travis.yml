@@ -1,0 +1,3 @@
+language: node
+git:
+  depth: 3

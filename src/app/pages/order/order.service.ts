@@ -11,14 +11,14 @@ export class OrderService {
   constructor (private http: HttpClient) {}
 
   getOrders () {
-    return this.http.get<Order[]>('http://localhost:2700/orders')
+    return this.http.get<Order[]>('http://18.139.229.55/orders')
   }
 
   createOrder (order: CreateOrderDto) {
-    return this.http.post<Order>('http://localhost:2700/orders', order)
+    return this.http.post<Order>('http://18.139.229.55/orders', order)
   }
 
   cancelOrder (orderId: string) {
-    return this.http.delete<Order>(`http://localhost:2700/orders/${orderId}`)
+    return this.http.delete<Order>(`http://18.139.229.55/orders/${orderId}`)
   }
 }
