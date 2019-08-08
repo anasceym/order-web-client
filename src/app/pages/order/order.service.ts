@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 
+import { CreateOrderDto } from './order.dto'
 import { Order } from './order.reducer'
 
 @Injectable({
@@ -11,5 +12,9 @@ export class OrderService {
 
   getOrders () {
     return this.http.get<Order[]>('http://localhost:2700/orders')
+  }
+
+  createOrder (order: CreateOrderDto) {
+    return this.http.post<Order>('http://localhost:2700/orders', order)
   }
 }

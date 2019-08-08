@@ -1,20 +1,33 @@
-<nz-card nzTitle="Orders">
+<nz-card nzTitle="Orders" [nzExtra]="extraTemplate">
   <nz-table #orderTable [nzData]="(orders$ | async)">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let data of orderTable.data; let i = index">
-          <td>{{ i+1 }}</td>
-          <td>{{ data.id }}</td>
-          <td>{{ data.name }}</td>
-          <td>Action</td>
-        </tr>
-      </tbody>
-    </nz-table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of orderTable.data; let i = index">
+        <td>{{ i+1 }}</td>
+        <td>{{ data.id }}</td>
+        <td>{{ data.name }}</td>
+        <td>
+          <nz-tag *ngIf="data.status === 'DELIVERED'" [nzColor]="'green'">{{ data.status }}</nz-tag>
+          <nz-tag *ngIf="data.status === 'CANCELLED'" [nzColor]="'red'">{{ data.status }}</nz-tag>
+          <nz-tag *ngIf="data.status === 'CREATED'" [nzColor]="'blue'">{{ data.status }}</nz-tag>
+          <nz-tag *ngIf="data.status === 'CONFIRMED'" [nzColor]="'cyan'">{{ data.status }}</nz-tag>
+        </td>
+        <td>Action</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <ng-template #extraTemplate>
+      <button nz-button nzType="primary" (click)="showModal()">Create new order</button>
+  </ng-template>
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="Create new modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <input nz-input placeholder="Order name" [(ngModel)]="orderName" />
+  </nz-modal>
 </nz-card>

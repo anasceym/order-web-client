@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core'
+import { FormsModule } from '@angular/forms'
 import { EffectsModule } from '@ngrx/effects'
 import { NgZorroAntdModule } from 'ng-zorro-antd'
 
@@ -16,6 +17,7 @@ import { OrderService } from './order.service'
     NgZorroAntdModule,
     CommonModule,
     HttpClientModule,
+    FormsModule,
     EffectsModule.forFeature([OrderEffects])
   ],
   exports: [OrderComponent],

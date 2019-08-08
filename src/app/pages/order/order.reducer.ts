@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store'
 
-import { ordersLoadSuccess } from './order.actions'
+import { appendOrder, ordersLoadSuccess } from './order.actions'
 
 export interface Order {
   id: string
@@ -21,6 +21,15 @@ export const orderReducer = createReducer(
     return {
       ...state,
       orders
+    }
+  }),
+  on(appendOrder, (state, { order }) => {
+    return {
+      ...state,
+      orders: [
+        ...state.orders,
+        order
+      ]
     }
   })
 )
