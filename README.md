@@ -1,6 +1,8 @@
-# OrderWebClient
+# order-web-client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
+Personal playground for Angule
+
+[![Build Status](https://travis-ci.org/anasceym/order-web-client.svg?branch=master)](https://travis-ci.org/anasceym/order-web-client)
 
 ## Development server
 
