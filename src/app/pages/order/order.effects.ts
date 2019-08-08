@@ -31,6 +31,6 @@ export class OrderEffects {
       )
     )
   )
-
+  
   constructor (private actions$: Actions, private orderService: OrderService) {}
 }

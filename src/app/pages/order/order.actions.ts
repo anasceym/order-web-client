@@ -25,3 +25,14 @@ export const appendOrder = createAction(
     order: Order
   }>()
 )
+
+export const viewOrder = createAction(
+  '[Order UI] View order',
+  props<{
+    id: string
+  }>()
+)
+
+export const cancelViewOrder = createAction(
+  '[Order UI] Cancel view order'
+)

@@ -20,14 +20,33 @@
           <nz-tag *ngIf="data.status === 'CREATED'" [nzColor]="'blue'">{{ data.status }}</nz-tag>
           <nz-tag *ngIf="data.status === 'CONFIRMED'" [nzColor]="'cyan'">{{ data.status }}</nz-tag>
         </td>
-        <td>Action</td>
+        <td>
+          <button nz-button nzType="primary" (click)="showViewModal(data.id)">View</button>
+          <button nz-button nzType="danger" *ngIf="data.status === 'CREATED'">Cancel</button>
+        </td>
       </tr>
     </tbody>
   </nz-table>
   <ng-template #extraTemplate>
       <button nz-button nzType="primary" (click)="showModal()">Create new order</button>
   </ng-template>
-  <nz-modal [(nzVisible)]="isVisible" nzTitle="Create new modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="Create new order" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
       <input nz-input placeholder="Order name" [(ngModel)]="orderName" />
+  </nz-modal>
+  <nz-modal [(nzVisible)]="isVisibleViewModal" nzTitle="Order" (nzOnCancel)="handleCancelViewModal()" (nzOnOk)="null">
+    <nz-descriptions nzTitle="" nzBordered nzLayout="vertical" [nzSize]="'small'">
+      <nz-descriptions-item nzTitle="Order ID" [nzSpan]="3">
+        {{this.viewingOrder.id}}
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Name" [nzSpan]="3">
+        {{this.viewingOrder.name}}
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Status" [nzSpan]="3">
+        <nz-tag *ngIf="this.viewingOrder.status === 'DELIVERED'" [nzColor]="'green'">{{ this.viewingOrder.status }}</nz-tag>
+        <nz-tag *ngIf="this.viewingOrder.status === 'CANCELLED'" [nzColor]="'red'">{{ this.viewingOrder.status }}</nz-tag>
+        <nz-tag *ngIf="this.viewingOrder.status === 'CREATED'" [nzColor]="'blue'">{{ this.viewingOrder.status }}</nz-tag>
+        <nz-tag *ngIf="this.viewingOrder.status === 'CONFIRMED'" [nzColor]="'cyan'">{{ this.viewingOrder.status }}</nz-tag>
+      </nz-descriptions-item>
+    </nz-descriptions>
   </nz-modal>
 </nz-card>
